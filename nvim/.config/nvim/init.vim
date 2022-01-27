@@ -99,7 +99,9 @@ set cursorline
 " Allow backspace to work as expected
 :set backspace=indent,eol,start
 " Add code folding
-set foldmethod=syntax
+" set foldmethod=syntax
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
 set splitbelow splitright
 " trim all excess white space
 nnoremap <silent> <F5> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
@@ -117,6 +119,11 @@ nnoremap <leader><C-f> <cmd>Telescope file_browser<cr>
 "Base vim keybindings
 imap jj <Esc>
 let mapleader = "\<Space>"
+" Copy paste with system clipboard
+noremap <Leader>y "*y
+noremap <Leader>p "*p
+noremap <Leader>Y "+y
+noremap <Leader>P "+p
 
 
 "LOOK AND FEEL
