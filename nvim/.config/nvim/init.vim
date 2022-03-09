@@ -42,6 +42,7 @@ call plug#begin()
     Plug 'L3MON4D3/LuaSnip'
     Plug 'glepnir/lspsaga.nvim'
     Plug 'onsails/lspkind-nvim'
+    Plug 'jose-elias-alvarez/null-ls.nvim'
 " Python
     Plug 'plytophogy/vim-virtualenv'
 " flutter Dart   
@@ -222,13 +223,16 @@ set hidden
 " a list of groups can be found at `:help nvim_tree_highlight`
 highlight NvimTreeFolderIcon guibg=blue
 
-
+" File type specific stuff
 autocmd BufNewFile,BufReadPost *.axml set filetype=html
-
+autocmd Filetype css setlocal tabstop=2 shiftwidth=2
+autocmd Filetype scss setlocal tabstop=2 shiftwidth=2
+autocmd Filetype html setlocal tabstop=2 shiftwidth=2
+autocmd Filetype htmldjango setlocal tabstop=2 shiftwidth=2
 
 "snippet things
 nnoremap <leader>tt :pu=strftime('%c')<CR>
 lua require('lsp')
 lua require('file-tree')
 lua require('tree-sitter')
-
+lua require('null-ls-config')
